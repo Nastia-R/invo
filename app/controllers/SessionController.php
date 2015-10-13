@@ -53,7 +53,7 @@ class SessionController extends ControllerBase
             ));
             if ($user != false) {
                 $this->_registerSession($user);
-                $this->flash->success('Welcome ' . $user->name);
+                $this->flash->success('Welcome, ' . $user->name);
                 return $this->forward('invoices/index');
             }
 
@@ -61,11 +61,6 @@ class SessionController extends ControllerBase
         }
 
         return $this->forward('session/index');
-    }
-
-    public function getUserId()
-    {
-        var_dump($this->session->id);
     }
 
     /**
