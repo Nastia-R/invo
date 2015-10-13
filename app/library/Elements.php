@@ -24,10 +24,26 @@ class Elements extends Component
                 'caption' => 'About',
                 'action' => 'index'
             ),
+            'privatepage' => array(
+                'caption' => 'Private page',
+                'action' => 'index'
+            ),
+            'portfolio' => array(
+                'caption' => 'Portfolio',
+                'action' => 'index'
+            ),
             'contact' => array(
                 'caption' => 'Contact',
                 'action' => 'index'
             ),
+            'todo' => array(
+                'caption' => 'Todo list',
+                'action' => 'index'
+            ),
+            'phones' => array(
+                'caption' => 'Phones',
+                'action' => 'index'
+            )
         ),
         'navbar-right' => array(
             'session' => array(
@@ -65,6 +81,29 @@ class Elements extends Component
         )
     );
 
+    private $_phonesMenu = array(
+        'Phones' => array(
+            'controller' => 'phones',
+            'action' => 'index',
+            'any' => false
+        ),
+        'Add phone' => array(
+            'controller' => 'phoneAdd',
+            'action' => 'index',
+            'any' => true
+        ),
+        'Phones producers' => array(
+            'controller' => 'phonesProducers',
+            'action' => 'index',
+            'any' => true
+        ),
+        'Phones OS' => array(
+            'controller' => 'operatingSystems',
+            'action' => 'index',
+            'any' => true
+        )
+    );
+
     /**
      * Builds header menu with left and right items
      *
@@ -81,6 +120,8 @@ class Elements extends Component
             );
         } else {
             unset($this->_headerMenu['navbar-left']['invoices']);
+            unset($this->_headerMenu['navbar-left']['privatepage']);
+            unset($this->_headerMenu['navbar-left']['phones']);
         }
 
         $controllerName = $this->view->getControllerName();
@@ -111,6 +152,25 @@ class Elements extends Component
         $actionName = $this->view->getActionName();
         echo '<ul class="nav nav-tabs">';
         foreach ($this->_tabs as $caption => $option) {
+            if ($option['controller'] == $controllerName && ($option['action'] == $actionName || $option['any'])) {
+                echo '<li class="active">';
+            } else {
+                echo '<li>';
+            }
+            echo $this->tag->linkTo($option['controller'] . '/' . $option['action'], $caption), '</li>';
+        }
+        echo '</ul>';
+    }
+
+    /**
+     * Returns phones menu
+     */
+    public function getPhonesMenu()
+    {
+        $controllerName = $this->view->getControllerName();
+        $actionName = $this->view->getActionName();
+        echo '<ul class="nav nav-tabs">';
+        foreach ($this->_phonesMenu as $caption => $option) {
             if ($option['controller'] == $controllerName && ($option['action'] == $actionName || $option['any'])) {
                 echo '<li class="active">';
             } else {

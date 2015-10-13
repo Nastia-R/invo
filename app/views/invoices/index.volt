@@ -25,7 +25,7 @@
             <td>Keith Carradine</td>
             <td>2014-04-04</td>
             <td align="right">22.75</td>
-            <td><span class="label label-important">Rejected</span></td>
+            <td><span class="label label-danger">Rejected</span></td>
         </tr>
         <tr>
             <td>51003</td>

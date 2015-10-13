@@ -46,7 +46,14 @@ class SecurityPlugin extends Plugin
 				'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
 				'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
 				'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-				'invoices'     => array('index', 'profile')
+				'invoices'     => array('index', 'profile'),
+				'privatepage'  => array('index'),
+				'todo'   	   => array('index', 'add', 'done', 'restore', 'remove'),
+				'phones'   => array('index', 'reserve', 'getUserName', 'cancelReservation'),
+				'phoneAdd'   => array('index', 'add'),
+				'phonesProducers'   => array('index', 'add'),
+				'operatingSystems'   => array('index', 'add')
+
 			);
 			foreach ($privateResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);
@@ -56,6 +63,7 @@ class SecurityPlugin extends Plugin
 			$publicResources = array(
 				'index'      => array('index'),
 				'about'      => array('index'),
+				'portfolio'  => array('index'),
 				'register'   => array('index'),
 				'errors'     => array('show401', 'show404', 'show500'),
 				'session'    => array('index', 'register', 'start', 'end'),

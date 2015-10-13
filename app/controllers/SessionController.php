@@ -7,6 +7,8 @@
  */
 class SessionController extends ControllerBase
 {
+    private $userId;
+
     public function initialize()
     {
         $this->tag->setTitle('Sign Up/Sign In');
@@ -59,6 +61,11 @@ class SessionController extends ControllerBase
         }
 
         return $this->forward('session/index');
+    }
+
+    public function getUserId()
+    {
+        var_dump($this->session->id);
     }
 
     /**

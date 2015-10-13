@@ -35,3 +35,4 @@ Then you'll need to create the database and initialize schema:
 
     echo 'CREATE DATABASE invo' | mysql -u root
     cat schemas/invo.sql | mysql -u root invo
+# learning_phalcon_with_INVO 

@@ -23,4 +23,10 @@ class Users extends Model
             return false;
         }
     }
+
+    public function initialize()
+    {
+        $this->hasMany('id', 'Todo', 'user_id');
+        $this->hasMany('id', 'Phones', 'user_id');
+    }
 }
